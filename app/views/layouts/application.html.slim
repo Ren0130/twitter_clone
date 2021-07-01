@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    - flash.each do |key, value|
+      div class=("alert alert-#{key}") role="alert" = value
     title
       | Twitter
     = csrf_meta_tags
@@ -9,3 +11,5 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = yield
+  script
+    |  $(function(){ $(".alert").fadeOut(5000); });
