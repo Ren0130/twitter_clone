@@ -1,0 +1,21 @@
+.users-new-wrapper
+  .container
+    .row
+      .col-md-offset-4.col-md-4.users-new-container
+        h1.text-center.text-white
+          | 新規登録
+        = form_for @user do |f|
+          .form-group
+            = f.label '名前', class: 'text-white'
+            = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label 'メールアドレス', class: 'text-white'
+            = f.text_field :email, class: 'form-control'
+          .form-group
+            = f.label 'パスワード' , class: 'text-white'
+            = f.password_field :password, class: 'form-control'
+          .form-group
+            = f.label 'パスワード確認' , class: 'text-white'
+            = f.password_field :password_confirmation, class: 'form-control'
+            = f.submit "登録", class: 'btn-block btn-white'
+        = link_to 'ログインはこちら', '#',class: 'text-white'

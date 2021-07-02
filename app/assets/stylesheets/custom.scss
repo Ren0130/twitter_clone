@@ -47,6 +47,13 @@ h1, h2 {
   height: 45px;
 }
 
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
 .users-new-wrapper {
   width: 100vw;
   height: 100vh;
