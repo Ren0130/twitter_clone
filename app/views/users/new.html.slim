@@ -17,5 +17,8 @@
           .form-group
             = f.label 'パスワード確認' , class: 'text-white'
             = f.password_field :password_confirmation, class: 'form-control'
+          .form-group
+            = f.label 'パスワード確認' , class: 'text-white'
+            = f.password_field :password_confirmation, class: 'form-control'
             = f.submit "登録", class: 'btn-block btn-white'
         = link_to 'ログインはこちら', '#',class: 'text-white'
