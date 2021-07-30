@@ -5,4 +5,6 @@ class Topic < ApplicationRecord
   validates :contents, presence: true
 
    belongs_to :user
+   
+   mount_uploader :image, ImageUploader
 end
