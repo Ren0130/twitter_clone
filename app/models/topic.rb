@@ -3,4 +3,6 @@ class Topic < ApplicationRecord
   validates :description, presence: true
   validates :image, presence: true
   validates :contents, presence: true
+
+   belongs_to :user
 end
