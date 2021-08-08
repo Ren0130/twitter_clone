@@ -2,7 +2,7 @@ doctype html
 html
   head
     - flash.each do |key, value|
-      div class=("alert alert-#{key}") role="alert" = value
+      div class=("alert alert-#{key} txt-white") role="alert" = value
     title
       | Twitter
     = csrf_meta_tags
