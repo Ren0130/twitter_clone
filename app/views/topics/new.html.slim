@@ -1,2 +1,13 @@
-h1 Topics#new
-p Find me in app/views/topics/new.html.slim
+.topic-new-wrapper
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.text-center Add Picture
+        = form_for @topic do |f|
+          .form-group
+            = f.label :image
+            = f.file_field :image
+          .form-group
+            = f.label :description
+            = f.text_area :description, class: 'form-control'
+          = f.submit '投稿', class: 'btn btn-black btn-block'
