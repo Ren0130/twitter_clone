@@ -4,13 +4,11 @@
       .col-md-3
         = image_tag 'bird.png'
       .col-md-9
-      br
-      br
-      br
         h1.text-white
           | Twitterを始めてみよう！
-    .row
-      .col-md-offset-4.col-md-3
-          = link_to '新規登録', new_user_registration_path, class: 'btn btn-block btn-white'
-      .col-md-offset-1.col-md-3
-          = link_to 'ログイン', edit_user_registration_path, class: 'btn btn-block btn-white'
+        .row
+          br
+          .col-md-offset-4.col-md-3
+              = link_to '新規登録', new_user_registration_path, class: 'btn btn-block btn-white'
+          .col-md-offset-1.col-md-3
+              = link_to 'ログイン', new_user_session_path, class: 'btn btn-block btn-white'
