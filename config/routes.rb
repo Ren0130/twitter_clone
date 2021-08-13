@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'topics/new'
+  resources :topics, only: %i[index new create]
   devise_for :users, module: :users
   root "roots#index"
 end
