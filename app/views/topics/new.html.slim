@@ -1,13 +1,13 @@
-.topic-new-wrapper
-  .container
-    .row
+.top-hero-wrapper.text-center
+  .container.top-hero-container
+    .row.justify-content-center
       .col-md-6.col-md-offset-3
-        h1.text-center Add Picture
+        h1.text-center.text-white Add Picture
         = form_for @topic do |f|
-          .form-group
+          .form-group.text-white
             = f.label :image
             = f.file_field :image
-          .form-group
+          .form-group.text-white
             = f.label :description
             = f.text_area :description, class: 'form-control'
-          = f.submit '投稿', class: 'btn btn-black btn-block'
+          = f.submit '投稿', class: 'btn btn-black btn-block text-white'
