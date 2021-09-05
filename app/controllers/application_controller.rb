@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || topics_path
+    stored_location_for(resource) || new_topic_path
   end
+
 end

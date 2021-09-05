@@ -10,6 +10,28 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    nav.navbar.navbar-default.navbar-fixed-top.navbar-transparent
+      .container
+        = link_to root_path do
+          span= image_tag "icons/logo.png", class: "navbar-brand"
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            li
+              = link_to "#" do
+                = image_tag "icons/heart.png"
+            li
+              = link_to "#" do
+                = image_tag "icons/camera.png"
+            li
+              = link_to destroy_user_session_path, method: :delete do
+                = image_tag "icons/logout.png"
+          - else
+            li
+              = link_to new_user_registration_path do
+                = image_tag "icons/register.png"
+            li
+              = link_to new_user_session_path do
+                = image_tag "icons/login.png"
     = yield
   script
     |  $(function(){ $(".alert").fadeOut(5000); });
