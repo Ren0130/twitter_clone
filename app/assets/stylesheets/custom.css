@@ -1,0 +1,113 @@
+@charset "UTF-8";
+h1, h2 {
+  font-weight: 100; }
+
+.text-white {
+  color: #fff; }
+
+.btn-white {
+  color: #fff;
+  border: 1px solid #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0); }
+  .btn-white:hover {
+    color: #fff; }
+
+.top-hero-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: image-url("root.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646; }
+
+.top-hero-container {
+  padding-top: 220px; }
+  .top-hero-container h1 {
+    font-family: 'Arial Black';
+    font-size: 56px;
+    margin-bottom: 20px; }
+  .top-hero-container h2 {
+    margin-bottom: 60px; }
+
+.form-control {
+  height: 45px; }
+
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000; }
+
+.users-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url("bg-top.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646; }
+  .users-new-wrapper .users-new-container {
+    padding-top: 220px; }
+    .users-new-wrapper .users-new-container .form-group {
+      margin-bottom: 20px; }
+
+.topic-index-wrapper {
+  padding-top: 70px;
+  background-color: #fafafa; }
+  .topic-index-wrapper .topic-index-single {
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px; }
+    .topic-index-wrapper .topic-index-single .topic-author {
+      padding-right: 20px;
+      padding-left: 20px; }
+    .topic-index-wrapper .topic-index-single .topic-text {
+      padding-right: 20px;
+      padding-left: 20px; }
+    .topic-index-wrapper .topic-index-single img {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 100%; }
+    .topic-index-wrapper .topic-index-single .topic-index-icon {
+      width: 35px;
+      height: 30px;
+      margin-left: 20px; }
+
+.txt-white {
+  color: white; }
+
+.btn-black {
+  color: #565656;
+  border: 1px solid #565656;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0); }
+  .btn-black:hover {
+    color: #565656; }
+
+.topic-new-wrapper {
+  padding-top: 120px; }
+
+.text-topic-background {
+  padding: 0.4em 0.5em;
+  /*文字の上下 左右の余白*/
+  color: #494949;
+  /*文字色*/
+  background: #f4f4f4;
+  /*背景色*/
+  border-left: solid 5px #7db4e6;
+  /*左線*/
+  border-bottom: solid 3px #d7d7d7;
+  /*下線*/ }
+
+/*# sourceMappingURL=custom.css.map */
