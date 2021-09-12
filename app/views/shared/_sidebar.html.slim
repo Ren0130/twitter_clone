@@ -1,0 +1,31 @@
+.col-md-2.d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark
+  a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none href="/"
+    svg.bi.me-2 height="32" width="40"
+      use xlink:href="#bootstrap"
+    span.fs-4 = image_tag 'bird.png', :size =>'50x50'
+  hr/
+  ul.nav.nav-pills.flex-column.mb-auto
+    li.nav-item
+      = link_to topics_path, class: 'nav-link' do
+        svg.bi.me-2 height="16" width="16"
+        | Home
+    li
+      a.nav-link.text-white href="#"
+        svg.bi.me-2 height="16" width="16"
+          use xlink:href="#speedometer2"
+        | Tweet
+    li
+      a.nav-link.text-white href="#"
+        svg.bi.me-2 height="16" width="16"
+          use xlink:href="#table"
+        | Profile
+    li
+      a.nav-link.text-white href="#"
+        svg.bi.me-2 height="16" width="16"
+          use xlink:href="#grid"
+        | Explore
+    li
+      a.nav-link.text-white href="#"
+        svg.bi.me-2 height="16" width="16"
+          use xlink:href="#people-circle"
+        | Messages
