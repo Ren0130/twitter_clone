@@ -10,28 +10,44 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-transparent
-      .container
-        = link_to root_path do
-          span= image_tag "icons/logo.png", class: "navbar-brand"
-        ul.nav.navbar-nav.navbar-right
-          - if user_signed_in?
-            li
-              = link_to "#" do
-                = image_tag "icons/heart.png"
-            li
-              = link_to "#" do
-                = image_tag "icons/camera.png"
-            li
-              = link_to destroy_user_session_path, method: :delete do
-                = image_tag "icons/logout.png"
-          - else
-            li
-              = link_to new_user_registration_path do
-                = image_tag "icons/register.png"
-            li
-              = link_to new_user_session_path do
-                = image_tag "icons/login.png"
-    = yield
+    .row
+      - if user_signed_in?
+        .col-md-2.d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark
+            a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none href="/"
+              svg.bi.me-2 height="32" width="40"
+                use xlink:href="#bootstrap"
+              span.fs-4 = image_tag 'bird.png', :size =>'50x50'
+            hr/
+            ul.nav.nav-pills.flex-column.mb-auto
+              li.nav-item
+                a.nav-link.active aria-current="page" href="#"
+                  svg.bi.me-2 height="16" width="16"
+                    use xlink:href="#home"
+                  | Home
+              li
+                a.nav-link.text-white href="#"
+                  svg.bi.me-2 height="16" width="16"
+                    use xlink:href="#speedometer2"
+                  | Tweet
+              li
+                a.nav-link.text-white href="#"
+                  svg.bi.me-2 height="16" width="16"
+                    use xlink:href="#table"
+                  | Profile
+              li
+                a.nav-link.text-white href="#"
+                  svg.bi.me-2 height="16" width="16"
+                    use xlink:href="#grid"
+                  | Explore
+              li
+                a.nav-link.text-white href="#"
+                  svg.bi.me-2 height="16" width="16"
+                    use xlink:href="#people-circle"
+                  | Messages
+        .col-md-10
+          = yield
+      - else
+        .col-md-12
+          = yield
   script
     |  $(function(){ $(".alert").fadeOut(5000); });

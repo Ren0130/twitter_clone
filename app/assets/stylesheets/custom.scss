@@ -20,8 +20,7 @@ h1, h2 {
 }
 
 .top-hero-wrapper {
-  width: 100vw;
-  min-height: 100vh;
+  height: 50vw;
   background-image: image-url('root.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -137,7 +136,6 @@ h1, h2 {
 }
 
 .navbar-transparent {
-  margin-bottom: 0px;
   background-color: rgba(0,0,0,0.5);
   a {
     color: #fff !important;
