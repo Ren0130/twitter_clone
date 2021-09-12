@@ -1,1 +1,4 @@
-= render 'topics/index'
+.topic-index-wrapper.top-hero-wrapper.text-center
+  .container.top-hero-container
+    - @topics.each do |topic|
+      = render 'topic_item', topic: topic
