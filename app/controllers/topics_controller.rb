@@ -8,7 +8,6 @@ class TopicsController < ApplicationController
   end
 
   def create
-    binding.pry
     @topic = current_user.topics.new(topic_params)
 
     if @topic.save

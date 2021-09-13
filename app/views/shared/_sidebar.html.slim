@@ -1,31 +1,45 @@
 .col-md-2.d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark
-  a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none href="/"
-    svg.bi.me-2 height="32" width="40"
-      use xlink:href="#bootstrap"
-    span.fs-4 = image_tag 'bird.png', :size =>'50x50'
-  hr/
-  ul.nav.nav-pills.flex-column.mb-auto
-    li.nav-item
-      = link_to topics_path, class: 'nav-link' do
-        svg.bi.me-2 height="16" width="16"
-        | Home
-    li
-      a.nav-link.text-white href="#"
-        svg.bi.me-2 height="16" width="16"
-          use xlink:href="#speedometer2"
-        | Tweet
-    li
-      a.nav-link.text-white href="#"
-        svg.bi.me-2 height="16" width="16"
-          use xlink:href="#table"
-        | Profile
-    li
-      a.nav-link.text-white href="#"
-        svg.bi.me-2 height="16" width="16"
-          use xlink:href="#grid"
-        | Explore
-    li
-      a.nav-link.text-white href="#"
-        svg.bi.me-2 height="16" width="16"
-          use xlink:href="#people-circle"
-        | Messages
+  .fixed-top
+    a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-decoration-none href="/"
+      svg.bi.me-2 height="32" width="40"
+        use xlink:href="#bootstrap"
+      span.fs-4 = image_tag 'bird.png', :size =>'50x50'
+    hr/
+    ul.nav.nav-pills.flex-column.align-items-baseline
+      li.nav-item
+        = link_to topics_path, class: 'nav-link text-white-li' do
+          | Home
+      li
+        = link_to topics_path, class: 'nav-link text-white-li' do
+          | Messages
+      li
+        = link_to new_topic_path, class: 'nav-link text-white-li' do
+          | Profile
+      li.li_bottom
+        = link_to topics_path, class: 'nav-link text-white-li' do
+          | Explore
+      li.text_center
+        button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@mdo" type="button"  Tweet
+      li
+        = link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white-li' do
+          | Logout
+      #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1"
+        .modal-dialog
+          .modal-content.dialog-width
+            .modal-header
+              h5#exampleModalLabel.modal-title.txt-black  New Tweet
+              button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+            .modal-body
+              .top-hero-wrapper-side.text-center-side
+                .row.justify-content-center
+                  .col-md-6.col-md-offset-3
+                    h1.text-center.text-white Add Picture
+                    = form_for Topic.new do |f|
+                      .form-group.text-white
+                        = f.label :image
+                        = f.file_field :image
+                      .form-group.text-white
+                        = f.label :description
+                        = f.text_area :description, class: 'form-control'
+                      = f.submit '投稿', class: 'btn btn-black btn-block text-white'
+
