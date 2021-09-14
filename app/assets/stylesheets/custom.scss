@@ -61,19 +61,23 @@ h1, h2 {
   }
 }
 
-.dialog-width{
-  width: 42vw;
-}
+#exampleModal {
+  .modal-content {
+    background-image: image-url('root.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
 
-.top-hero-wrapper-side {
-  width: 40vw;
-  height: 20vw;
-  background-image: image-url('root.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
+    color: white;
+  }
+
+  textarea#topic_description {
+    height: 50vh;
+    width: 100%;
+    resize: none;
+  }
 }
 
 .top-hero-container-side {
