@@ -3,9 +3,7 @@
     .topic-index-single
       h2.topic-author
         - if topic.user.id != current_user.id
-          = link_to user_topics_path(:user_id => topic.user.id), class: '' do
-            = topic.user.name
-        = render 'shared/follow_button', user: topic.user
+          = topic.user.name
       - if !topic.image.url.nil?
         = image_tag  topic.image.url, class: ''
       p.topic-text

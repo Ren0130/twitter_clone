@@ -1,0 +1,19 @@
+.topic-index-wrapper.top-hero-wrapper.text-center
+  .row.justify-content-center.text-white
+    .row
+      .col-md-3.col-md-offset-1
+        h1
+          = @user.name
+      .col-md-2
+        = render 'shared/follow_button', user: @user
+    .row
+      col-md-offset-3.col-md-3
+        tr
+          td
+            | フォロー数: #{@user.followings.count}
+          td
+            | フォロワー数: #{@user.followers.count}
+    .row.justify-content-center
+      .col-md-10
+        - @user.topics.each do |topic|
+          = render 'shared/profile_item', topic: topic
