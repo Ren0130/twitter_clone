@@ -32,12 +32,6 @@ h1, h2 {
   margin-bottom: 80px;
 }
 
-.text_center{
-  width : 400px;
-  margin-bottom: 440px;
-}
-
-
 .top-hero-wrapper {
   min-height: 50vw;
   background-image: image-url('root.jpg');
@@ -61,7 +55,7 @@ h1, h2 {
   }
 }
 
-#exampleModal {
+#NewTweetModal {
   .modal-content {
     background-image: image-url('root.jpg');
     background-position: center;
@@ -127,11 +121,9 @@ h1, h2 {
   padding-top: 70px;
   background-color: #fafafa;
   .topic-index-single {
-    background-color: #fff;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 30px;
-    border: 1px solid #e6ecf0;
+    margin-top: 10px;
     border-radius: 3px;
     .topic-author {
       padding-right: 20px;
@@ -185,10 +177,11 @@ h1, h2 {
   margin: 40px;
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
-  background: #f4f4f4;/*背景色*/
-  border-left: solid 5px #7db4e6;/*左線*/
+  background: #E3E3E3;/*背景色*/
+  border-left: solid 5px #136EAB;/*左線*/
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
+
 
 .navbar-transparent {
   background-color: rgba(0,0,0,0.5);
@@ -205,3 +198,16 @@ h1, h2 {
     height: 40px;
   }
 }
+
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+}
+
+.topic-img {
+    border-radius: 50%;
+}
+
+  .UserName {
+    text-size: 20px;
+  }

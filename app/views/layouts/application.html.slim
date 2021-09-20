@@ -13,7 +13,7 @@ html
     .row
       - if user_signed_in?
         = render 'shared/sidebar'
-        .col-md-10
+        .col-md-11
           = yield
       - else
         .col-md-12
