@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :topics
   has_many :favorites
+  mount_uploader :image, ImageUploader
+
   has_many :favorite_topics, through: :favorites, source: 'topic'
 
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

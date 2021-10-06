@@ -2,9 +2,11 @@
   .topic-index-single
     .h2.topic-author.col-md-offset-6
       = link_to user_topics_path(:user_id => topic.user.id), class: 'Editlink' do
+        - if !topic.user.image.url.nil?
+          = image_tag  topic.user.image.url, :size => '50x50', class: ''
         = topic.user.name
     - if !topic.image.url.nil?
-      = image_tag  topic.image.url, class: ''
+      = image_tag  topic.image.url, class: 'topic-img'
     p.topic-text
       = topic.description
     - if topic.user.id != current_user.id
