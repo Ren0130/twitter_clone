@@ -55,7 +55,7 @@ h1, h2 {
   }
 }
 
-#NewTweetModal {
+#NewTweetModal, #CommentModal {
   .modal-content {
     background-image: image-url('root.jpg');
     background-position: center;
@@ -65,9 +65,13 @@ h1, h2 {
     background-color: #464646;
 
     color: white;
+
+    .form-group:not(:last-child) {
+      @extend .mb-3;
+    }
   }
 
-  textarea#topic_description {
+  textarea {
     height: 50vh;
     width: 100%;
     resize: none;
