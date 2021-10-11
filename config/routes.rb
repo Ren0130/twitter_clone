@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :topics, only: %i[index new create]
+  resources :comments, only: :create
 
   devise_for :users, module: :users
   root "roots#index"

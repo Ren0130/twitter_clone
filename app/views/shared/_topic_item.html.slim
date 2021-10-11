@@ -13,24 +13,4 @@
       - if !topic.favorite_users.include?(current_user)
         = link_to favorites_path(topic_id: topic.id), method: :post do
           = image_tag 'icons/heart-black.png', class: 'topic-index-icon'
-    .btn data-bs-target="#NewTweetModal" data-bs-toggle="modal" data-bs-whatever="@mdo" type="button" = image_tag 'icons/comment.png', class: 'topic-index-icon'
-
-
-#CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
-  .modal-dialog.modal-xl
-    .modal-content
-      .modal-header
-        h5#CommentModal.modal-title  New Comment
-        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
-      .modal-body
-        .top-hero-wrapper-side.text-center-side
-          .row.justify-content-center
-            .col-md-10.col-md-offset-1
-              = form_for Topic.new do |f|
-                .form-group
-                  = f.label :image
-                  = f.file_field :image
-                .form-group
-                  = f.label :description
-                  = f.text_area :description, class: 'form-control'
-                = f.submit '投稿', class: 'btn btn-black btn-block text-white'
+    .btn data-bs-target="#CommentModal" data-bs-toggle="modal" data-bs-topic-id=topic.id type="button" = image_tag 'icons/comment.png', class: 'topic-index-icon'
