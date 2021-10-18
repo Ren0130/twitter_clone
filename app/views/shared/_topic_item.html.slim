@@ -1,7 +1,7 @@
-.row.text-topic-background
-  .topic-index-single.text-center
+.row.text-topic-background onclick="if (event.target.tagName === 'DIV') window.location='#{ user_topics_path(user_id: topic.user.id)}'"
+  .topic-index-single
     .h2.topic-author.col-md-offset-6
-      = link_to user_topics_path(:user_id => topic.user.id), class: 'Editlink' do
+      = link_to user_topics_path(user_id: topic.user.id), class: 'edit-link' do
         - if !topic.user.image.url.nil?
           = image_tag  topic.user.image.url, :size => '50x50', class: ''
         = topic.user.name

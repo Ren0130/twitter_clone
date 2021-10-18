@@ -5,7 +5,8 @@
     .row.justify-content-center
       .col-md-10
         - @topics.each do |topic|
-          = render 'shared/topic_item', topic: topic
+          - if current_user.following?(topic.user) || topic.user_id == current_user.id
+            = render 'shared/topic_item', topic: topic
 
 #CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
   .modal-dialog.modal-xl
