@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :topics, only: %i[index new create]
+  get '/topics/:topic_id', to: 'topics#detail', as: 'detail_topics'
   resources :comments, only: :create
 
   devise_for :users, module: :users

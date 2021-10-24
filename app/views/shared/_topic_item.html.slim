@@ -1,4 +1,4 @@
-.row.text-topic-background onclick="if (event.target.tagName === 'DIV') window.location='#{ user_topics_path(user_id: topic.user.id)}'"
+.row.text-topic-background onclick="if (event.target.tagName === 'DIV') window.location='#{ detail_topics_path(topic_id: topic.id)}'"
   .topic-index-single
     .h2.topic-author.col-md-offset-6
       = link_to user_topics_path(user_id: topic.user.id), class: 'edit-link' do

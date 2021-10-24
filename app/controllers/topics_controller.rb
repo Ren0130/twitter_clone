@@ -7,6 +7,10 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
+  def detail
+    @topic = Topic.find(params[:topic_id])
+  end
+
   def create
     @topic = current_user.topics.new(topic_params)
 
