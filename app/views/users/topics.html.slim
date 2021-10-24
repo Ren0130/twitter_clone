@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper.text-center
+.topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center.text-white
     .row
       .col-md-3.col-md-offset-1
@@ -17,3 +17,28 @@
       .col-md-10
         - @user.topics.each do |topic|
           = render 'shared/profile_item', topic: topic
+
+#CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
+  .modal-dialog.modal-xl
+    .modal-content
+      .modal-header
+        h5#CommentModal.modal-title  New Comment
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+      .modal-body
+        .top-hero-wrapper-side.text-center-side
+          .row.justify-content-center
+            .col-md-10.col-md-offset-1
+              = form_for Comment.new do |f|
+                = f.hidden_field :topic_id
+                .form-group
+                  = f.label :description
+                  = f.text_area :description, class: 'form-control'
+                = f.submit '投稿', class: 'btn btn-black btn-block text-white'
+
+javascript:
+  var commentModal = document.getElementById('CommentModal')
+  commentModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var topicId = button.getAttribute('data-bs-topic-id')
+    commentModal.querySelector('#comment_topic_id').value = topicId
+  })
