@@ -3,7 +3,7 @@
     .col-md-6.col-md-offset-3
       h1.text-center.text-white Home
     .row.justify-content-center
-      .col-md-10
+      .col-md-12
         - @topics.each do |topic|
           - if current_user.following?(topic.user) || topic.user_id == current_user.id
             = render 'shared/topic_item', topic: topic

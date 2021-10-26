@@ -2,6 +2,8 @@
   .row.justify-content-center.text-white
     .row
       .col-md-3.col-md-offset-1
+        - if !@user.image.url.nil?
+          = image_tag  @user.image.url, :size => '50x50', class: ''
         h1
           = @user.name
       .col-md-2
@@ -14,7 +16,7 @@
           td
             | フォロワー数: #{@user.followers.count}
     .row.justify-content-center
-      .col-md-10
+      .col-md-12
         - @user.topics.each do |topic|
           = render 'shared/profile_item', topic: topic
 

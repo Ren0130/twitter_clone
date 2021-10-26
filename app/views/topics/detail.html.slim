@@ -3,11 +3,12 @@
     .col-md-6.col-md-offset-3
       h1.text-center.text-white Home
     .row.justify-content-center
-      .col-md-10
+      .col-md-12
         = render 'shared/topic_item', topic: @topic
     .row.justify-content-center
       .col-md-10
-        = render 'shared/topic_item', topic: @topic
+        - @topic.comments.each do |comment|
+          = comment.description
 
 
 #CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
