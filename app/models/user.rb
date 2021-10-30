@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+  validates :twitter_id, presence: true
 
   has_many :topics
   has_many :favorites

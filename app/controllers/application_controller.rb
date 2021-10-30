@@ -7,12 +7,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name image twitter_id])
   end
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || new_topic_path
   end
-
 
 end
