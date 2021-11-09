@@ -1,14 +1,20 @@
 .topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center
-    .col-md-6.col-md-offset-3
-      h1.text-center.text-white Home
     .row.justify-content-center
       .col-md-12
         = render 'shared/topic_item', topic: @topic
     .row.justify-content-center
-      .col-md-10
+      .col-md-12
         - @topic.comments.each do |comment|
-          = comment.description
+          .row.text-topic-background
+            .h2.topic-author.col-md-offset-6
+              = link_to user_topics_path(user_id: comment.user.id), class: 'edit-link' do
+                - if !comment.user.image.url.nil?
+                  = image_tag  comment.user.image.url, :size => '50x50', class: ''
+                = comment.user.name
+                hr width="250"
+            p.topic-text
+              = comment.description
 
 
 #CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
