@@ -6,6 +6,9 @@
           = image_tag  @user.image.url, :size => '50x50', class: ''
         h1
           = @user.name
+        h3
+          = "@#{@user.twitter_id}"
+        br
       .col-md-2
         = render 'shared/follow_button', user: @user
     .row

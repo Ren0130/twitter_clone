@@ -14,6 +14,10 @@
                 = comment.user.name
                 hr width="250"
             p.topic-text
+              返信先：
+              =link_to user_topics_path(user_id: comment.user.id), class: 'edit-link' do
+                = "@#{@topic.user.twitter_id}"
+            p.topic-text
               = comment.description
 
 
