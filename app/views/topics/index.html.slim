@@ -1,7 +1,14 @@
 .topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center
     .col-md-6.col-md-offset-3
+      = link_to user_topics_path(user_id: current_user.id), class: 'edit-link' do
+        - if !current_user.image.url.nil?
+          = image_tag  current_user.image.url, :size => '50x50', class: ''
       h1.text-center.text-white Home
+      form.d-flex
+        input.form-control.me-2 aria-label="Search" placeholder="検索" type="search"
+        button.btn.btn-outline-success type="submit"  Search
+      br
     .row.justify-content-center
       .col-md-12
         - @topics.each do |topic|

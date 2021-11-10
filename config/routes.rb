@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :topics, only: %i[index new create]
+  resources :topics, only: %i[index new create] do
+    resource :favorite, only: [:create, :destroy]
+  end
+
   get '/topics/:topic_id', to: 'topics#detail', as: 'detail_topics'
   resources :comments, only: :create
 
@@ -7,7 +10,6 @@ Rails.application.routes.draw do
   root "roots#index"
 
   get 'favorites/index'
-  post '/favorites', to: 'favorites#create'
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
