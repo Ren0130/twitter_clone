@@ -11,6 +11,10 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
   end
 
+  def explore
+    @topics = Topic.all.order(created_at: "DESC")
+  end
+
   def create
     @topic = current_user.topics.new(topic_params)
 

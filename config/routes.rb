@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :topics, only: %i[index new create] do
+  resources :topics, only: %i[index create] do
     resource :favorite, only: [:create, :destroy]
   end
 
+  get 'topics/explore', to: 'topics#explore', as: 'explore_topics'
   get '/topics/:topic_id', to: 'topics#detail', as: 'detail_topics'
+
   resources :comments, only: :create
 
   devise_for :users, module: :users
