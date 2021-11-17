@@ -11,8 +11,28 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
   end
 
-  def explore
-    @topics = Topic.all.order(created_at: "DESC")
+  def explore_latest
+    if params[:keyword].present?
+      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
+    else
+      @topics =nil
+    end
+  end
+
+  def explore_account
+    if params[:keyword].present?
+      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
+    else
+      @topics =nil
+    end
+  end
+
+  def explore_image
+    if params[:keyword].present?
+      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
+    else
+      @topics =nil
+    end
   end
 
   def create

@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper
+.topic-index-wrapper.top-hero-wrapper.bg-dark
   .row.justify-content-center
     .col-md-1
         = link_to user_topics_path(user_id: current_user.id), class: 'edit-link' do
@@ -6,15 +6,28 @@
             = image_tag  current_user.image.url, :size => '50x50', class: ''
     .col-md-10
       h1.text-center.text-white Explore
-    form.d-flex
-      input.form-control.me-2 aria-label="Search" placeholder="検索" type="search"
-      button.btn.btn-outline-success type="submit"  Search
+      .row.justify-content-center
+        .col-md-1
+        form.d-flex.col-md-6
+        = form_with url: explore_image_topics_path, class: 'd-flex col-md-6', local: true, method: :get do |f|
+          = f.text_field :keyword,value: params[:keyword], class: 'form-control me-2', placeholder: "キーワードを入力してください", 'aria-label': "Search", type: "search"
+          = f.submit "検索", class: 'btn btn-outline-success'
+      hr
+      ul.nav.nav-tabs.justify-content-center
+        #LatestTab.li.nav-item
+          = link_to "最新", explore_latest_topics_path, class: 'nav-link edit-link-white'
+        #AccountTab.li.nav-item
+          = link_to "アカウント", explore_account_topics_path, class: 'nav-link edit-link-white'
+        #ImageTab.li.nav-item
+          = link_to "画像", explore_image_topics_path, class: 'active nav-link edit-link-white'
+    hr
     .row.justify-content-center
       .col-md-12
-        - if !@topics.nil?
+        - if !@topics.nil? && @topics.count > 0
           - @topics.each do |topic|
-            - if current_user.following?(topic.user) || topic.user_id == current_user.id
-              = render 'shared/topic_item', topic: topic
+            = render 'shared/topic_item', topic: topic
+        - elsif !@topics.nil? && @topics.count == 0
+          h2.justify-content-center　検索結果がありませんでした。
 
 #CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
   .modal-dialog.modal-xl
