@@ -14,10 +14,10 @@
     .row
       col-md-offset-3.col-md-3
         tr
+          td.h3
+            | フォロー中: #{@user.followings.count}
           td
-            | フォロー数: #{@user.followings.count}
-          td
-            | フォロワー数: #{@user.followers.count}
+            | フォロワー: #{@user.followers.count}
     .row.justify-content-center
       .col-md-12
         - @user.topics.each do |topic|

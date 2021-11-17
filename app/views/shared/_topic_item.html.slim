@@ -10,7 +10,7 @@
     hr width="250"
     p.topic-text
       = topic.description
-    = image_tag 'icons/comment.png', class: 'topic-index-icon'
+    .btn data-bs-target="#CommentModal" data-bs-toggle="modal" data-bs-topic-id=topic.id type="button" = image_tag 'icons/comment.png', class: 'topic-index-icon'
     = "#{topic.comments.count}"
     - if !topic.favorite_users.include?(current_user)
       = link_to topic_favorite_path(topic), method: :post do
