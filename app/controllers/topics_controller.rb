@@ -11,27 +11,13 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
   end
 
-  def explore_latest
-    if params[:keyword].present?
+  def explore
+    if latest_search?
       @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
-    else
-      @topics =nil
-    end
-  end
-
-  def explore_account
-    if params[:keyword].present?
-      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
-    else
-      @topics =nil
-    end
-  end
-
-  def explore_image
-    if params[:keyword].present?
-      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").order(created_at: "DESC")
-    else
-      @topics =nil
+    elsif account_search?
+      @users = User.where("name LIKE ?", "%#{params[:keyword]}%").or(User.where("twitter_id LIKE ?", "%#{params[:keyword]}%"))
+    elsif image_search?
+      @topics = Topic.where("description LIKE ?", "%#{params[:keyword]}%").where.not(image: [nil, ''])
     end
   end
 
@@ -48,5 +34,17 @@ class TopicsController < ApplicationController
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
+  end
+
+  def latest_search?
+    params[:keyword].present? && params[:tabvalue] == "Latest"
+  end
+
+  def account_search?
+    params[:keyword].present? && params[:tabvalue] == "Account"
+  end
+
+  def image_search?
+    params[:keyword].present? && params[:tabvalue] == "Image"
   end
 end

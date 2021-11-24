@@ -3,9 +3,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
   end
 
-  get 'topics/explore_latest', to: 'topics#explore_latest', as: 'explore_latest_topics'
-  get 'topics/explore_image', to: 'topics#explore_image', as: 'explore_image_topics'
-  get 'topics/explore_account', to: 'topics#explore_account', as: 'explore_account_topics'
+  get 'topics/explore', to: 'topics#explore', as: 'explore_topics'
   get '/topics/:topic_id', to: 'topics#detail', as: 'detail_topics'
 
   resources :comments, only: :create
