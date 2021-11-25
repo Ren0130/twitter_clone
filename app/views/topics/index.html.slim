@@ -5,29 +5,12 @@
           - if !current_user.image.url.nil?
             = image_tag  current_user.image.url, :size => '50x50', class: ''
     .col-md-10
-      h1.text-center.text-white Home
+      h1.text-center.text-white.font-cursive Home
     .row.justify-content-center
       .col-md-12
         - @topics.each do |topic|
           - if current_user.following?(topic.user) || topic.user_id == current_user.id
             = render 'shared/topic_item', topic: topic
-
-#CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
-  .modal-dialog.modal-xl
-    .modal-content
-      .modal-header
-        h5#CommentModal.modal-title  New Comment
-        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
-      .modal-body
-        .top-hero-wrapper-side.text-center-side
-          .row.justify-content-center
-            .col-md-10.col-md-offset-1
-              = form_for Comment.new do |f|
-                = f.hidden_field :topic_id
-                .form-group
-                  = f.label :description
-                  = f.text_area :description, class: 'form-control'
-                = f.submit '投稿', class: 'btn btn-black btn-block text-white'
 
 javascript:
   var commentModal = document.getElementById('CommentModal')
