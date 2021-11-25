@@ -11,5 +11,11 @@
       = topic.description
     = image_tag 'icons/comment.png', class: 'topic-index-icon'
     = "#{topic.comments.count}"
-    = image_tag 'icons/heart-black.png', class: 'topic-index-icon'
-    = "#{topic.favorite_users.count}"
+    - if !topic.favorite_users.include?(current_user)
+      = link_to topic_favorite_path(topic), method: :post do
+        = image_tag 'icons/heart.png', class: 'topic-index-icon'
+      = "#{topic.favorite_users.count}"
+    - else
+      = link_to topic_favorite_path(topic), method: :delete do
+        = image_tag 'icons/heart-black.png', class: 'topic-index-icon'
+      = "#{topic.favorite_users.count}"
