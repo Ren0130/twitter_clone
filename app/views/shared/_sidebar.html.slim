@@ -1,0 +1,46 @@
+.col-md-1.d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark
+  .sidebar-wrapper
+    a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-decoration-none href="/"
+      use xlink:href="#bootstrap"
+      span.fs-4 = image_tag 'bird.png', :size =>'50x50', class: 'topic-img'
+    br
+    #UserName = current_user.name
+    hr/
+    ul.nav.nav-pills.flex-column.align-items-baseline.font-cursive
+      li.nav-item
+        = link_to topics_path, class: 'nav-link text-white-li' do
+          | Home
+      li
+        = link_to topics_path, class: 'nav-link text-white-li' do
+          | Messages
+      li
+        = link_to user_topics_path(:user_id => current_user.id), class: 'nav-link text-white-li' do
+          | Profile
+      li.li_bottom
+        = link_to explore_topics_path, class: 'nav-link text-white-li' do
+          | Explore
+      li
+        button.btn.btn-primary data-bs-target="#NewTweetModal" data-bs-toggle="modal" data-bs-whatever="@mdo" type="button"  Tweet
+      li
+        = link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white-li' do
+          | Logout
+
+#NewTweetModal.modal.fade aria-hidden="true" aria-labelledby="NewTweetModal" tabindex="-1"
+  .modal-dialog.modal-xl
+    .modal-content
+      .modal-header
+        h5#NewTweetModal.modal-title  New Tweet
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+      .modal-body
+        .top-hero-wrapper-side.text-center-side
+          .row.justify-content-center
+            .col-md-10.col-md-offset-1
+              = form_for Topic.new do |f|
+                .form-group
+                  = f.label :image
+                  = f.file_field :image
+                .form-group
+                  = f.label :description
+                  = f.text_area :description, class: 'form-control'
+                = f.submit '投稿', class: 'btn btn-black btn-block text-white'
+

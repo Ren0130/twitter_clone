@@ -1,0 +1,21 @@
+.topic-index-wrapper.top-hero-wrapper
+  .row.justify-content-center
+    .col-md-1
+        = link_to user_topics_path(user_id: current_user.id), class: 'edit-link' do
+          - if !current_user.image.url.nil?
+            = image_tag  current_user.image.url, :size => '50x50', class: ''
+    .col-md-10
+      h1.text-center.text-white.font-cursive Home
+    .row.justify-content-center
+      .col-md-12
+        - @topics.each do |topic|
+          - if current_user.following?(topic.user) || topic.user_id == current_user.id
+            = render 'shared/topic_item', topic: topic
+
+javascript:
+  var commentModal = document.getElementById('CommentModal')
+  commentModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var topicId = button.getAttribute('data-bs-topic-id')
+    commentModal.querySelector('#comment_topic_id').value = topicId
+  })

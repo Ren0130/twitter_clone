@@ -1,0 +1,3 @@
+class SharedsController < ApplicationController
+
+end

@@ -1,0 +1,47 @@
+.topic-index-wrapper.top-hero-wrapper
+  .row.justify-content-center
+    .row.justify-content-center
+      .col-md-12
+        = render 'shared/topic_item', topic: @topic
+    .row.justify-content-center
+      .col-md-12
+        - @topic.comments.each do |comment|
+          .row.text-topic-background
+            .h2.topic-author.col-md-offset-6
+              = link_to user_topics_path(user_id: comment.user.id), class: 'edit-link' do
+                - if !comment.user.image.url.nil?
+                  = image_tag  comment.user.image.url, :size => '50x50', class: ''
+                = comment.user.name
+                hr width="250"
+            p.topic-text
+              返信先：
+              =link_to user_topics_path(user_id: comment.user.id), class: 'edit-link' do
+                = "@#{@topic.user.twitter_id}"
+            p.topic-text
+              = comment.description
+
+
+#CommentModal.modal.fade aria-hidden="true" aria-labelledby="CommentModal" tabindex="-1"
+  .modal-dialog.modal-xl
+    .modal-content
+      .modal-header
+        h5#CommentModal.modal-title  New Comment
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+      .modal-body
+        .top-hero-wrapper-side.text-center-side
+          .row.justify-content-center
+            .col-md-10.col-md-offset-1
+              = form_for Comment.new do |f|
+                = f.hidden_field :topic_id
+                .form-group
+                  = f.label :description
+                  = f.text_area :description, class: 'form-control'
+                = f.submit '投稿', class: 'btn btn-black btn-block text-white'
+
+javascript:
+  var commentModal = document.getElementById('CommentModal')
+  commentModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var topicId = button.getAttribute('data-bs-topic-id')
+    commentModal.querySelector('#comment_topic_id').value = topicId
+  })

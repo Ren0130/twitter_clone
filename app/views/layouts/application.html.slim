@@ -2,7 +2,7 @@ doctype html
 html
   head
     - flash.each do |key, value|
-      div class=("alert alert-#{key}") role="alert" = value
+      div class=("alert alert-#{key} txt-white") role="alert" = value
     title
       | Twitter
     = csrf_meta_tags
@@ -10,6 +10,13 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .row
+      - if user_signed_in?
+        = render 'shared/sidebar'
+        .col-md-11
+          = yield
+      - else
+        .col-md-12
+          = yield
   script
     |  $(function(){ $(".alert").fadeOut(5000); });
