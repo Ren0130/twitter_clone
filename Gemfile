@@ -81,3 +81,7 @@ gem 'devise'
 gem "carrierwave"
 
 gem 'devise-i18n'
+
+gem 'dotenv-rails'
+
+gem 'fog-aws'
