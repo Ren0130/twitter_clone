@@ -14,22 +14,22 @@
           = f.text_field :keyword,value: params[:keyword], class: 'form-control me-2', placeholder: "キーワードを入力してください", 'aria-label': "Search", type: "search"
           = f.submit "検索", class: 'btn btn-outline-success'
       hr
-      .tabs
+      .tabs.row
         -if(params[:tabvalue] == "Latest")
           input#LatestTab checked="checked" name="tab_item" type="radio"
         -else
           input#LatestTab name="tab_item" type="radio"
-        label.tab_item for="LatestTab"  最新
+        label.tab_item.col-md-12.col-lg-4 for="LatestTab"  最新
         -if(params[:tabvalue] == "Account")
           input#AccountTab checked="checked" name="tab_item" type="radio"
         -else
           input#AccountTab name="tab_item" type="radio"
-        label.tab_item for="AccountTab"  アカウント
+        label.tab_item.col-md-12.col-lg-4 for="AccountTab"  アカウント
         -if(params[:tabvalue] == "Image")
           input#ImageTab checked="checked" name="tab_item" type="radio"
         -else
           input#ImageTab name="tab_item" type="radio"
-        label.tab_item for="ImageTab"  画像
+        label.tab_item.col-md-12.col-lg-4 for="ImageTab"  画像
     hr
     .row.justify-content-center
       .col-md-12
