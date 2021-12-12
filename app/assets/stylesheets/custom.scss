@@ -1,5 +1,9 @@
 body {
-    overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100vh;
+  background-image: image-url('root.jpg');
+  background-color: #383838;
 }
 
 h1, h2 {
@@ -34,16 +38,6 @@ h1, h2 {
 
 .li_bottom{
   margin-bottom: 80px;
-}
-
-.top-hero-wrapper {
-  min-height: 50vw;
-  background-image: image-url('root.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
 }
 
 .top-hero-container {
@@ -131,7 +125,6 @@ h1, h2 {
 
 .topic-index-wrapper {
   padding-top: 70px;
-  background-color: #fafafa;
   .topic-index-single {
     padding-top: 20px;
     padding-bottom: 20px;
