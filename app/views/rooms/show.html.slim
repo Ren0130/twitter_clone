@@ -1,0 +1,60 @@
+#rooms-show.topic-index-wrapper.top-hero-wrapper.bg-dark
+  .row.justify-content-center
+    - @entries.each do |e|
+        strong
+          - if e.user_id != current_user.id
+            .text-white.text-center
+              h1.font-cursive
+                = e.user.name
+                | さん
+              = "@" +e.user.twitter_id
+
+    .chats
+      .chat#scroll.border-top.border-bottom
+        - if @messages.present?
+          - @messages.each do |m|
+            - if m.user_id != current_user.id
+              .chat-dm
+                .balloon.left
+                  strong= m.content
+                br/
+              .text-strftime-left.text-white
+                = m.created_at.strftime("%Y年%m月%d日 %H:%M")
+                    br/
+            -elsif m.user_id == current_user.id
+              .chat-dm
+                .balloon.right
+                  strong= m.content
+                br/
+              .text-strftime-right.text-white
+                = m.created_at.strftime("%Y年%m月%d日 %H:%M")
+                    br/
+      .posts
+        = form_for @message, html: { style: "form-control" } do |f|
+          = f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, id: 'text-content', class:'text-control', type:'Text'
+          = f.hidden_field :room_id, value: @room.id
+          = f.submit ">>", id: 'submit', class: 'form-submit btn button2'
+
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+      if (!document.getElementById('rooms-show')) return;
+
+      const textContent = document.getElementById('text-content')
+      const scroll = document.getElementById('scroll');
+      const submit = document.getElementById('submit');
+
+      scroll.scrollTo(0, scroll.scrollHeight);
+      submit.disabled = true;
+
+      textContent.addEventListener('input', function (event) {
+        if(textContent.value != ""){
+          submit.disabled = false;
+        }
+        else{
+          submit.disabled = true;
+        }
+      });
+    });
+
+
