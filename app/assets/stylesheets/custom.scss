@@ -1,5 +1,9 @@
 body {
-    overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100vh;
+  background-image: image-url('root.jpg');
+  background-color: #383838;
 }
 
 h1, h2 {
@@ -8,15 +12,6 @@ h1, h2 {
 
 .font-cursive{
   font-family: cursive ;
-}
-
-.text-white-li {
-  color: #fff;
-}
-
-.text-white-li:hover {
-  color: black;
-  background-color: #aaf;
 }
 
 .btn-white {
@@ -30,20 +25,6 @@ h1, h2 {
   &:hover {
     color: #fff;
   }
-}
-
-.li_bottom{
-  margin-bottom: 80px;
-}
-
-.top-hero-wrapper {
-  min-height: 50vw;
-  background-image: image-url('root.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
 }
 
 .top-hero-container {
@@ -131,7 +112,6 @@ h1, h2 {
 
 .topic-index-wrapper {
   padding-top: 70px;
-  background-color: #fafafa;
   .topic-index-single {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -211,8 +191,39 @@ h1, h2 {
 }
 
 .sidebar-wrapper {
-  position: fixed;
-  top: 0;
+  height: 100vh;
+
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .p-3;
+  @extend .border-end;
+  @extend .border-white;
+  @extend .border-5;
+  @extend .text-white;
+
+  ul {
+    @extend .nav;
+    @extend .nav-pills;
+    @extend .flex-column;
+    @extend .text-center;
+    @extend .font-cursive;
+
+    &.nav-upper {
+      @extend .mb-auto;
+    }
+
+
+    li a {
+      color: #fff;
+
+      @extend .nav-link;
+
+      &:hover {
+        color: black;
+        background-color: #aaf;
+      }
+    }
+  }
 }
 
 .UserName {
@@ -230,15 +241,12 @@ h1, h2 {
 }
 
 .tabs {
-  margin-top: 50px;
-  padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 700px;
-  margin: 0 auto;}
+  margin: 0 auto 40px;
+}
 
 .tab_item {
-  width: calc(100%/3);
   height: 50px;
   border-bottom: 3px solid #5ab4bd;
   background-color: #d9d9d9;
@@ -246,11 +254,8 @@ h1, h2 {
   font-size: 16px;
   text-align: center;
   color: #565656;
-  display: block;
-  float: left;
   text-align: center;
   font-weight: bold;
-  transition: all 0.2s ease;
 }
 .tab_item:hover {
   opacity: 0.75;
@@ -268,7 +273,7 @@ input[name="tab_item"] {
   overflow: hidden;
 }
 
-.tabs input:checked  .tab_item {
+.tabs input:checked + label {
   background-color: #5ab4bd;
   color: #fff;
 }

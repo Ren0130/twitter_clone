@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper
+#topics-detail.topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center
     .row.justify-content-center
       .col-md-12
@@ -38,10 +38,16 @@
                   = f.text_area :description, class: 'form-control'
                 = f.submit '投稿', class: 'btn btn-black btn-block text-white'
 
-javascript:
-  var commentModal = document.getElementById('CommentModal')
-  commentModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget
-    var topicId = button.getAttribute('data-bs-topic-id')
-    commentModal.querySelector('#comment_topic_id').value = topicId
-  })
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+      if (!document.getElementById('#topics-detail')) return;
+
+      var commentModal = document.getElementById('CommentModal')
+      var button = event.relatedTarget
+      var topicId = button.getAttribute('data-bs-topic-id')
+
+      commentModal.addEventListener('show.bs.modal', function (event) {
+        commentModal.querySelector('#comment_topic_id').value = topicId
+      })
+    });

@@ -1,4 +1,4 @@
-.col-md-1.d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark
+.col-md-3.col-lg-2.d-flex.flex-column.flex-shrink-0
   .sidebar-wrapper
     a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-decoration-none href="/"
       use xlink:href="#bootstrap"
@@ -6,20 +6,21 @@
     br
     #UserName = current_user.name
     hr/
-    ul.nav.nav-pills.flex-column.align-items-baseline.font-cursive
-      li.nav-item
-        = link_to topics_path, class: 'nav-link text-white-li' do
+    ul.nav-upper
+      li
+        = link_to topics_path do
           | Home
       li
-        = link_to user_topics_path(:user_id => current_user.id), class: 'nav-link text-white-li' do
+        = link_to user_topics_path(:user_id => current_user.id) do
           | Profile
-      li.li_bottom
-        = link_to explore_topics_path, class: 'nav-link text-white-li' do
+      li
+        = link_to explore_topics_path do
           | Explore
       li
         button.btn.btn-primary data-bs-target="#NewTweetModal" data-bs-toggle="modal" data-bs-whatever="@mdo" type="button"  Tweet
+    ul.nav-bottom
       li
-        = link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white-li' do
+        = link_to destroy_user_session_path, method: :delete do
           | Logout
 
 #NewTweetModal.modal.fade aria-hidden="true" aria-labelledby="NewTweetModal" tabindex="-1"

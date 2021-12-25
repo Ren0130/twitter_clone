@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper
+#users-topics.topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center.text-white
     .row
       .col-md-3.col-md-offset-1
@@ -11,6 +11,17 @@
         br
       .col-md-2
         = render 'shared/follow_button', user: @user
+        - unless @user.id == current_user.id
+          - if @isRoom
+            p.user-show-room
+              / TODO: link_toに変更
+              a.btn.btn-primary.btn-lg href="/rooms/#{@roomId}"  チャットへ
+          - else
+            = form_for @room do |f|
+              = fields_for @entry do |e|
+                = e.hidden_field :user_id, value: @user.id
+              = f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"
+
     .row
       col-md-offset-3.col-md-3
         tr
@@ -40,10 +51,16 @@
                   = f.text_area :description, class: 'form-control'
                 = f.submit '投稿', class: 'btn btn-black btn-block text-white'
 
-javascript:
-  var commentModal = document.getElementById('CommentModal')
-  commentModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget
-    var topicId = button.getAttribute('data-bs-topic-id')
-    commentModal.querySelector('#comment_topic_id').value = topicId
-  })
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+      if (!document.getElementById('users-topics')) return;
+
+      var commentModal = document.getElementById('CommentModal')
+
+      commentModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget
+        var topicId = button.getAttribute('data-bs-topic-id')
+        commentModal.querySelector('#comment_topic_id').value = topicId
+      })
+    });

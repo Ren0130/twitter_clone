@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper
+#users-index.topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center
     .col-md-1
         = link_to user_topics_path(user_id: current_user.id), class: 'edit-link' do
@@ -12,10 +12,16 @@
           - if current_user.following?(topic.user) || topic.user_id == current_user.id
             = render 'shared/topic_item', topic: topic
 
-javascript:
-  var commentModal = document.getElementById('CommentModal')
-  commentModal.addEventListener('show.bs.modal', function (event) {
-    var button = event.relatedTarget
-    var topicId = button.getAttribute('data-bs-topic-id')
-    commentModal.querySelector('#comment_topic_id').value = topicId
-  })
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+      if (!document.getElementById('#users-index')) return;
+
+      var commentModal = document.getElementById('CommentModal')
+      var button = event.relatedTarget
+      var topicId = button.getAttribute('data-bs-topic-id')
+
+      commentModal.addEventListener('show.bs.modal', function (event) {
+        commentModal.querySelector('#comment_topic_id').value = topicId
+      })
+    });
