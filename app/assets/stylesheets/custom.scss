@@ -273,7 +273,7 @@ input[name="tab_item"] {
   overflow: hidden;
 }
 
-.tabs input:checked  .tab_item {
+.tabs input:checked + label {
   background-color: #5ab4bd;
   color: #fff;
 }
