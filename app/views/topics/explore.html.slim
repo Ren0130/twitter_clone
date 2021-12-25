@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper
+#topics-explore.topic-index-wrapper.top-hero-wrapper
   .row.justify-content-center
     .col-md-1
         = link_to user_topics_path(user_id: current_user.id), class: 'edit-link' do
@@ -64,27 +64,33 @@
                   = f.text_area :description, class: 'form-control'
                 = f.submit '投稿', class: 'btn btn-black btn-block text-white'
 
-javascript:
-  var commentModal = document.getElementById('CommentModal')
-  commentModal.addEventListener('show.bs.modal', function (event) {
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+    if (!document.getElementById('#topics-explore')) return;
+
+    var commentModal = document.getElementById('CommentModal')
     var button = event.relatedTarget
     var topicId = button.getAttribute('data-bs-topic-id')
-    commentModal.querySelector('#comment_topic_id').value = topicId
-  })
 
-  var latestTab = document.getElementById('LatestTab')
-  var accountTab = document.getElementById('AccountTab')
-  var imageTab = document.getElementById('ImageTab')
-  var serchtype = document.getElementById('serchtype')
+    commentModal.addEventListener('show.bs.modal', function (event) {
+      commentModal.querySelector('#comment_topic_id').value = topicId
+    })
 
-  latestTab.addEventListener('click', function (event) {
-  serchtype.value = "Latest"
-  })
+      var latestTab = document.getElementById('LatestTab')
+      var accountTab = document.getElementById('AccountTab')
+      var imageTab = document.getElementById('ImageTab')
+      var serchtype = document.getElementById('serchtype')
 
-  accountTab.addEventListener('click', function (event) {
-  serchtype.value = "Account"
-  })
+      latestTab.addEventListener('click', function (event) {
+      serchtype.value = "Latest"
+      })
 
-  imageTab.addEventListener('click', function (event) {
-  serchtype.value = "Image"
-  })
+      accountTab.addEventListener('click', function (event) {
+      serchtype.value = "Account"
+      })
+
+      imageTab.addEventListener('click', function (event) {
+      serchtype.value = "Image"
+      })
+    });
