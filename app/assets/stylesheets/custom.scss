@@ -204,8 +204,11 @@ h1, h2 {
 }
 
 .sidebar-wrapper {
-  position: fixed;
-  top: 0;
+  @extend .p-3;
+  @extend .border-end;
+  @extend .border-white;
+  @extend .border-5;
+  @extend .text-white;
 }
 
 .UserName {
