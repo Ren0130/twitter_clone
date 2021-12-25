@@ -36,10 +36,6 @@ h1, h2 {
   }
 }
 
-.li_bottom{
-  margin-bottom: 80px;
-}
-
 .top-hero-container {
   padding-top: 220px;
   h1 {
@@ -204,11 +200,27 @@ h1, h2 {
 }
 
 .sidebar-wrapper {
+  height: 100vh;
+
+  @extend .d-flex;
+  @extend .flex-column;
   @extend .p-3;
   @extend .border-end;
   @extend .border-white;
   @extend .border-5;
   @extend .text-white;
+
+  ul {
+    @extend .nav;
+    @extend .nav-pills;
+    @extend .flex-column;
+    @extend .text-center;
+    @extend .font-cursive;
+
+    &.nav-upper {
+      @extend .mb-auto;
+    }
+  }
 }
 
 .UserName {

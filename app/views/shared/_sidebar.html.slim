@@ -6,18 +6,19 @@
     br
     #UserName = current_user.name
     hr/
-    ul.nav.nav-pills.flex-column.text-center.font-cursive
-      li.nav-item
+    ul.nav-upper
+      li
         = link_to topics_path, class: 'nav-link text-white-li' do
           | Home
       li
         = link_to user_topics_path(:user_id => current_user.id), class: 'nav-link text-white-li' do
           | Profile
-      li.li_bottom
+      li
         = link_to explore_topics_path, class: 'nav-link text-white-li' do
           | Explore
       li
         button.btn.btn-primary data-bs-target="#NewTweetModal" data-bs-toggle="modal" data-bs-whatever="@mdo" type="button"  Tweet
+    ul.nav-bottom
       li
         = link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white-li' do
           | Logout
