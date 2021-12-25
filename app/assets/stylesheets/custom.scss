@@ -14,15 +14,6 @@ h1, h2 {
   font-family: cursive ;
 }
 
-.text-white-li {
-  color: #fff;
-}
-
-.text-white-li:hover {
-  color: black;
-  background-color: #aaf;
-}
-
 .btn-white {
   color: #fff;
   border: 1px solid #fff;
@@ -219,6 +210,18 @@ h1, h2 {
 
     &.nav-upper {
       @extend .mb-auto;
+    }
+
+
+    li a {
+      color: #fff;
+
+      @extend .nav-link;
+
+      &:hover {
+        color: black;
+        background-color: #aaf;
+      }
     }
   }
 }
