@@ -1,4 +1,4 @@
-.topic-index-wrapper.top-hero-wrapper.bg-dark
+#rooms-show.topic-index-wrapper.top-hero-wrapper.bg-dark
   .row.justify-content-center
     - @entries.each do |e|
         strong
@@ -33,25 +33,28 @@
         = form_for @message, html: { style: "form-control" } do |f|
           = f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, id: 'text-content', class:'text-control', type:'Text'
           = f.hidden_field :room_id, value: @room.id
-          = f.submit "➤", id: 'submit', class: 'form-submit btn button2'
+          = f.submit ">>", id: 'submit', class: 'form-submit btn button2'
 
-javascript:
-  const textContent = document.getElementById('text-content')
-  const scroll = document.getElementById('scroll');
-  const submit = document.getElementById('submit');
+script data-turbolinks-eval="false"
+  |
+    document.addEventListener('turbolinks:load', function () {
+      if (!document.getElementById('rooms-show')) return;
 
-  window.addEventListener('load', function () {
-    scroll.scrollTo(0, scroll.scrollHeight);
-    submit.disabled = true;
-  });
+      const textContent = document.getElementById('text-content')
+      const scroll = document.getElementById('scroll');
+      const submit = document.getElementById('submit');
 
-  textContent.addEventListener('input', function (event) {
-    if(textContent.value != ""){
-      submit.disabled = false;
-    }
-    else{
+      scroll.scrollTo(0, scroll.scrollHeight);
       submit.disabled = true;
-    }
-  });
+
+      textContent.addEventListener('input', function (event) {
+        if(textContent.value != ""){
+          submit.disabled = false;
+        }
+        else{
+          submit.disabled = true;
+        }
+      });
+    });
 
 
